@@ -2,6 +2,8 @@ import requests
 import sys
 import time
 
+requests.packages.urllib3.disable_warnings() 
+
 list = []
 
 active_subdomains = open("active_subdomains.txt", "a")
@@ -11,7 +13,7 @@ with open(sys.argv[1]) as f:
         list.append(i)
 
 for i in list:
-    time.sleep(1)
+    time.sleep(.3)
     try:
         r = requests.get("https://" + i, verify = False, timeout=5)
         print("Trying " + i)
